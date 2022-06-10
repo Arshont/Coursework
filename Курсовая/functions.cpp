@@ -143,61 +143,10 @@ void getFrequencyTable(FrequencyTableElement* ASCIItable, FrequencyTable& freque
 		}
 	}
 	frequencyTable.sort();
-	/*std::sort(frequencyTable.begin(), frequencyTable.end(),
-		[](FrequencyTableElement* obj1, FrequencyTableElement* obj2)
-		{
-			return obj1->frequency_ > obj2->frequency_;
-		}
-	);*/
 }
 
 FrequencyTable getCodes(FrequencyTable& frequencyTable, FrequencyTableElement* ASCIItable)
 {
-	//if (frequencyTable.getSize() / 2 != 0)
-	//{
-	//	FrequencyTable left;
-	//	FrequencyTable right;
-	//	size_t leftSum = 0;
-	//	size_t rightSum = 0;
-	//	while (!frequencyTable.isEmpty())
-	//	{
-	//		right.pushFront(frequencyTable.popBack());
-	//		rightSum += right.front().frequency_;
-	//		while (rightSum > leftSum && !frequencyTable.isEmpty())
-	//		{
-	//			left.pushBack(frequencyTable.popFront());
-	//			leftSum += left.back().frequency_;
-	//		}
-	//	}
-	//	left.addCodes(0);
-	//	right.addCodes(1);
-	//	/*size_t leftSize = left.getSize();
-	//	for (size_t i = 0; i < leftSize; i++)
-	//	{
-	//		left[i].code_.pushBack(0);
-	//	}
-	//	size_t rightSize = right.getSize();
-	//	for (size_t i = 0; i < rightSize; i++)
-	//	{
-	//		right[i].code_.pushBack(1);
-	//	}*/
-	//	/*std::for_each(left.begin(), left.end(),
-	//		[](FrequencyTableElement* obj)
-	//		{
-	//			obj->code_.pushBack(false);
-	//		}
-	//	);
-	//	std::for_each(right.begin(), right.end(),
-	//		[](FrequencyTableElement* obj)
-	//		{
-	//			obj->code_.pushBack(true);
-	//		}
-	//	);*/
-	//	left = getCodes(left);
-	//	right = getCodes(right);
-	//	left.merge(right);
-	//	return std::move(left);
-	//}
 	if (frequencyTable.getSize() / 2 > 0)
 	{
 		FrequencyTable left;
@@ -215,8 +164,8 @@ FrequencyTable getCodes(FrequencyTable& frequencyTable, FrequencyTableElement* A
 				leftSum += left.back().frequency_;
 			}
 		}
-		left.addCodes(ASCIItable, 0);
-		right.addCodes(ASCIItable, 1);
+		left.addCodes(0);
+		right.addCodes(1);
 		left = getCodes(left, ASCIItable);
 		right = getCodes(right, ASCIItable);
 		left.merge(right);

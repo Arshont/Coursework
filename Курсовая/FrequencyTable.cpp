@@ -14,6 +14,7 @@ FrequencyTable::FrequencyTable(size_t capacity) : head_(-1), tail_(-1), size_(0)
 		throw std::invalid_argument("Ошибка. Некорректно задан размер очереди. Завершение программы.");
 	}
 }
+
 FrequencyTable::FrequencyTable(const FrequencyTable& table) :head_(table.head_), tail_(table.tail_), size_(table.size_), capacity_(table.capacity_)
 {
 	array_ = new FrequencyTableElement[table.capacity_];
@@ -213,17 +214,18 @@ void FrequencyTable::merge(FrequencyTable& frequencyTable)
 	}
 }
 
-void FrequencyTable::addCodes(FrequencyTableElement* ASCIItable, const bool& code)
+void FrequencyTable::addCodes(const bool& code)
 {
 	if (!isEmpty())
 	{
 		int i = head_;
 		while (i != tail_)
 		{
-			ASCIItable[array_[i].ch_].code_.pushBack(code);
+			array_[i].code_.pushBack(code);
+
 			i = (i + 1) % size_;
 		}
-		ASCIItable[array_[i].ch_].code_.pushBack(code);
+		array_[i].code_.pushBack(code);
 	}
 }
 

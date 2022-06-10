@@ -39,7 +39,7 @@ public:
 	FrequencyTableElement operator[](const size_t index) const;
 
 	void merge(FrequencyTable& frequencyTable);
-	void addCodes(FrequencyTableElement* ASCIItable, const bool& code);
+	void addCodes(const bool& code);
 	
 	void sort();
 
